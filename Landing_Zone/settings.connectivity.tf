@@ -98,7 +98,7 @@ locals {
                 threat_intelligence_mode      = ""
                 threat_intelligence_allowlist = []
                 availability_zones = {
-                  zone_1 = true
+                  zone_1 = false
                   zone_2 = false
                   zone_3 = false
                 }
@@ -161,9 +161,9 @@ locals {
             azure_synapse_analytics_dev          = true
             azure_synapse_analytics_sql          = true
             azure_synapse_studio                 = true
-            azure_web_apps_sites                 = true
+           
             azure_web_apps_static_sites          = true
-            cognitive_services_account           = true
+            
             microsoft_power_bi                   = true
             signalr                              = true
             signalr_webpubsub                    = true
@@ -171,10 +171,11 @@ locals {
             storage_account_file                 = true
             storage_account_queue                = true
             storage_account_table                = true
-            storage_account_web                  = true*/
+            storage_account_web                  = true
+            azure_web_apps_sites       = true
+            cognitive_services_account = true
+            azure_key_vault            = true            */
             cognitive_services_account = false
-            azure_key_vault            = true
-            //azure_open_ai   = true
           }
           private_link_locations = [
             local.location
@@ -192,7 +193,7 @@ locals {
       custom_settings_by_resource_type = {
         azurerm_subnet = {
           connectivity = {
-            eastus = {             # replace eastus with the location you are using
+            canadaeast = {             # replace eastus with the location you are using
               inboundsubnetdns = { # replace subnet_name with the name of the subnet you want to configure and repeat this block for each subnet you need to configure
 
                 delegation = [ # add multiple entries to this list if multiple delegations are needed
